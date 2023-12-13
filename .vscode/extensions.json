@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "eamodio.gitlens",
+    "editorconfig.editorconfig",
+    "mikestead.dotenv",
+    "stylelint.vscode-stylelint",
+    "wix.vscode-import-cost"
+  ]
+}
