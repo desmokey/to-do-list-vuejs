@@ -1,33 +1,32 @@
 <template>
-  <div class="to-do-item" v-bind:class="{
+  <div
+    class="to-do-item"
+    :class="{
       '--completed': completed
     }">
-      <span @click="markComplete"> {{ title }} </span>
-      <button @click="$emit('delete-todo-event', id)"> x </button>
+      <div>
+        <input class="to-do-item__checkbox" type="checkbox" :checked="completed" />
+        <label class="to-do-item__label" @click="$store.dispatch('markCompleteToDoItem', id)"> {{ title }} </label>
+      </div>
+      <button @click="$emit('delete-todo-event', id)"> Remove </button>
   </div>
 </template>
 
 <script>
   export default {
     name: 'ToDoItem',
-    data () {
-      return {
-        completed: false
-      }
-    },
     props: {
       id: {
-        type: Number,
+        type: String,
         required: true
       },
       title: {
         type: String,
         required: true
       },
-    },
-    methods: {
-      markComplete(){
-        this.completed = !this.completed
+      completed: {
+        type: Boolean,
+        required: true
       }
     }
   }
@@ -35,11 +34,31 @@
 
 <style lang="scss">
   .to-do-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
     font-size: 2rem;
     cursor: pointer;
 
     &.--completed {
       color: green;
+    }
+
+    &__checkbox {
+      vertical-align: middle;
+    }
+
+    &__label {
+      margin-left: 10px;
+    }
+
+    button {
+      font-size: .75rem;
+
+      &:hover {
+        border-color: red;
+      }
     }
   }
 </style>

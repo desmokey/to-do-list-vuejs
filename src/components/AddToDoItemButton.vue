@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="add-to-do-item-button">
     <form @submit="addToDo">
       <input type="text" v-model="title" name="title">
       <button type="submit">Add</button>
@@ -34,3 +34,21 @@
     }
   }
 </script>
+
+<style lang="scss">
+  .add-to-do-item-button {
+    & > form {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 2rem;
+    }
+
+    button {
+      font-size: .75rem;
+
+      &:hover {
+        border-color: green;
+      }
+    }
+  }
+</style>
